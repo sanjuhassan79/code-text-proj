@@ -1,19 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Contact } from '../models/contact.model'
+import { launches } from '../models/launches.model'
 
 
 // Define a service using a base URL and expected endpoints
 export const contactsapi  = createApi({
   reducerPath: 'contactsapi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://api.spacexdata.com/v3/launches' }),
   tagTypes:['Contact'],
   endpoints: (builder) => ({
-    getcontacts: builder.query<Contact[],void>({
-      query: () => `/posts`,
+    getcontacts: builder.query<launches[],void>({
+      query: () => `/`,
       providesTags: ['Contact'],
     }),
-    getcontact: builder.query<Contact[],number>({
-      query: (id) => `/posts/${id}`,
+    getcontact: builder.query<launches[],number>({
+      query: (flight_number) => `/${flight_number}`,
       providesTags: ['Contact'],
     }),
 //     addContact:builder.mutation<void, Contact>({
