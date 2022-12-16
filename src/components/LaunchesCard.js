@@ -1,42 +1,58 @@
 import React from 'react';
 import { BiListPlus } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import TimeAgo from './TimeAgo';
 const LaunchesCard = ({ item }) => {
   return (
     <Link to={`single/${item.flight_number}`}>
-      <div
-        className="shadow-lg rounded-3xl border  p-3 flex flex-col text-indigo-900"
-        key={item.flight_number}
-      >
-        <div className="h-52 w-52 mx-auto">
-          <img src={item.links.mission_patch} alt={item.mission_name} />
-        </div>
-        <h1 className="font-bold text-center">{item.mission_name}</h1>
-        <p className="text-center font-semibold mb-3">
-          {item?.details?.slice(0, 150)}
-        </p>
-        <div className=" flex-1">
-          {/* <ul className="space-y-2">
-          {item.keyFeature.map((feature) => {
-            return <li className="text-sm ">{feature}</li>;
-          })}
-        </ul> */}
-        </div>
-        <div className="flex gap-2 mt-5">
-          {/* <button
-          className="bg-indigo-500 rounded-full py-1 px-2 flex-1 text-white text-bold"
-          //   onClick={() =>
-          //     dispatch({ type: actionTypes.ADD_TO_CART, payload: item })
-          //   }
+      <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+        <div
+          class="bg-cover bg-center h-56 p-4"
+          style={{
+            backgroundImage: `url(${item.links.mission_patch})`,
+          }}
         >
-          Add to cart
-        </button> */}
-          {/* <button
-          title="Add to wishlist"
-          className="bg-indigo-500  py-1 px-2 rounded-full"
-        >
-          <BiListPlus className="text-white" />
-        </button> */}
+          <div class="flex justify-end">11</div>
+        </div>
+        <div class="p-4">
+          <p class="uppercase tracking-wide text-sm font-bold text-gray-700">
+            {item?.mission_name}
+          </p>
+          <p class="text-xl text-gray-900">Launch Year:{item?.launch_year}</p>
+          <p class="text-gray-700">
+            <TimeAgo timestamp={item?.launch_date_utc} />
+          </p>
+        </div>
+        <div class="flex p-4 border-t border-gray-300 text-gray-700">
+          <div class="flex-1 inline-flex items-center">
+            <span class="text-gray-900 font-bold">
+              {String(item?.launch_success)}:
+            </span>
+            <p>Success</p>
+          </div>
+          <div class="flex-1 inline-flex items-center">
+            <span class="text-gray-900 font-bold">
+              {String(item?.upcoming)}:
+            </span>
+            <p>upcoming</p>
+          </div>
+        </div>
+        <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
+          <div class="text-xs uppercase font-bold text-gray-600 tracking-wide">
+            Realtor
+          </div>
+          <div class="flex items-center pt-2">
+            <div
+              class="bg-cover bg-center w-10 h-10 rounded-full mr-3"
+              style={{
+                backgroundImage: ` url(${item?.links.mission_patch})`,
+              }}
+            ></div>
+            <div>
+              <p class="font-bold text-gray-900">{item.mission_name}</p>
+              <p class="text-sm text-gray-700">{item?.rocket.rocket_name}</p>
+            </div>
+          </div>
         </div>
       </div>
     </Link>

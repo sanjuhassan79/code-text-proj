@@ -16,33 +16,7 @@ export const contactsapi  = createApi({
       query: (flight_number) => `/${flight_number}`,
       providesTags: ['Contact'],
     }),
-//     addContact:builder.mutation<void, Contact>({
-// query:contact=>({
-//   url:`/posts`,
-//   method:'POST',
-//   body:contact
-// }),
-// invalidatesTags: ['Contact'],
 
-//     }),
-//     updateContact:builder.mutation<void, Contact>({
-// query:(id,...rest)=>({
-//   url:`/posts/${id}`,
-//   method:'PUT',
-//   body:rest
-// })
-// ,
-// invalidatesTags: ['Contact'],
-//     }),
-//     deleteContact:builder.mutation<void, number>({
-// query:(id)=>({
-//   url:`/posts/${id}`,
-//   method:'DELETE',
-
-// })
-// ,
-// invalidatesTags: ['Contact'],
-//     }),
   }),
 })
 
